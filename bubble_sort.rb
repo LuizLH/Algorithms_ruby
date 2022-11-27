@@ -27,14 +27,17 @@ module BubbleSort
 
     #Classical implementation
     def BubbleSort.sort(list)
-        n = list.length
-        for i in (0..n-1)
+        n = list.length-1
+        for i in (0..n)
+            puts "i = #{n-i-1}"
             for j in (0..n-i-1)
-               if (list[j] > list[j+1])
-                 swap = list[j];
-                 list[j] = list[j+1]
-                 list[j+1] = swap;
-               end
+                puts "j = #{j}"
+                if (list[j] > list[j+1])
+                    puts "J = #{list[j]} <-> J+1 = #{list[j+1]}"
+                    swap = list[j];
+                    list[j] = list[j+1]
+                    list[j+1] = swap;
+                end
             end
         end
     end

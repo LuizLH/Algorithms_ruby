@@ -6,6 +6,6 @@ lista = [5, 1, 4, 2, 8]
 
 puts "Antes -> #{lista}"
 
-BubbleSort::mySort(lista)
+BubbleSort::sort(lista)
 
 puts "Depois -> #{lista}"
