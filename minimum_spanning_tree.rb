@@ -24,7 +24,13 @@ class Graph
  
         # An index variable, used for result[]
         e = 0
-        
+
+        while ( e < @vertices - 1)
+
+        end
+    
+
+
     end
 
 

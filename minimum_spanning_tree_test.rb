@@ -1,6 +1,7 @@
 #Testing Kruskal’s Minimum Spanning Tree Algorithm
+require "./minimum_spanning_tree.rb"
 
-g = Graphbox.new(4)
+g = Graph.new(4)
 
 # Edge 0-1
 g.addEdge(0, 1, 10)
@@ -18,4 +19,3 @@ g.addEdge(1, 3, 15)
 g.addEdge(2,3,4)
 
 g.KruskalMST()
-
