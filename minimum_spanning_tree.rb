@@ -18,11 +18,11 @@ class Graph
         j = rr + 1
         while i < j 
             until R[j]<=x
-                j:=j-1
+                j = j - 1
             end
             
             until R[i]>=x
-                i:=i+1
+                i = i + 1
             end
 
             if i < j
@@ -39,7 +39,7 @@ class Graph
                 E[j] = z
             end
         end
-      Partition = j
+      return j
     end
 
     def QuicksortR(p, rr)
