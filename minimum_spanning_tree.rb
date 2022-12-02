@@ -3,57 +3,106 @@
 class Graph
     
     def initialize(vertices)
-       @vertices = vertices # Number of Vertices
-       @graph = Array.new
+       @n = vertices # Number of Vertices
+       @m = 0
+       @b = Array.new(256, 0)
+       @e = Array.new(256, 0)
+       @r = Array.new(256, 0)
+       @rank = Array.new(256, 0)      
+       @pred = Array.new(256, 0)
     end
 
     # function to add an edge to graph
     def addEdge(src, dest, weight) 
-        @graph.append([src, dest, weight])
+        @m = @m + 1
+        @b.add(src)
+        @e.add(dest)
+        @r.add(weight)
     end
 
     def partition(p, rr)
-        x = R[p]
+        x = @r[p]
         i = p - 1
         j = rr + 1
         while i < j 
-            until R[j]<=x
+            until @r[j]<=x
                 j = j - 1
             end
             
-            until R[i]>=x
+            until @r[i]>=x
                 i = i + 1
             end
 
             if i < j
-                t    = R[i] 
-                R[i] = R[j] 
-                R[j] = t
+                t     = @r[i] 
+                @r[i] = @r[j] 
+                @r[j] = t
 
-                z    = B[i] 
-                B[i] = B[j] 
-                B[j] = z
+                z     = @b[i] 
+                @b[i] = @b[j] 
+                @b[j] = z
                 
-                z    = E[i]
-                E[i] = E[j]
-                E[j] = z
+                z     = @e[i]
+                @e[i] = @e[j]
+                @e[j] = z
             end
         end
       return j
     end
 
-    def QuicksortR(p, rr)
+    def quicksortR(p, rr)
         if p < rr
-            q = Partition(p,rr)
-            QuicksortR(p,q)
-            QuicksortR(q+1,rr)
+            q = partition(p,rr)
+            quicksortR(p,q)
+            quicksortR(q+1,rr)
+        end
+    end
+
+    def makeSet(x)
+        @rank[x] = 0      
+        @pred[x] = x
+    end
+  
+    def findSet(x)
+        if x != @pred[x] 
+            @pred[x] = FindSet(@pred[x])
+        end
+        findSet = @pred[x]
+    end
+  
+    def link(x,y)
+        if @rank[x] > @rank[y]
+            @pred[y] = x
+        else
+            @pred[x] = y
+            if @rank[x]=@rank[y]
+                inc(@rank[y])
+            end
+        end
+    end
+  
+    def union(x,y)
+      link(findSet(x), findSet(y))
+    end
+  
+    def minTree
+        for i in (1..@n)
+            makeSet(i)
+        end
+        @answer=0
+        for i in (1..@m)
+            if findSet(B[i]) != findSet(E[i])
+                @answer = @answer + R[i]
+                union(B[i],E[i])
+            end
         end
     end
     
     def KruskalMST()
 
-        QuicksortR(1,n);
-        #MinTree;
+        quicksortR(1,@n)
+        minTree
+        puts "Resultado -> #{@answer}"
 
     end
 
