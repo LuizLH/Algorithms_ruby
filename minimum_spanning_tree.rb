@@ -1,10 +1,11 @@
 #Implementing Kruskal’s Minimum Spanning Tree Algorithm
-
+ 
+#My personal implementation MST
 class Graph
     
     def initialize(vertices)
        @n = vertices # Number of Vertices
-       @m = 0
+       @m = -1
        @b = Array.new(256, 0)
        @e = Array.new(256, 0)
        @r = Array.new(256, 0)
@@ -15,9 +16,9 @@ class Graph
     # function to add an edge to graph
     def addEdge(src, dest, weight) 
         @m = @m + 1
-        @b.add(src)
-        @e.add(dest)
-        @r.add(weight)
+        @b[@m] = src
+        @e[@m] = dest
+        @r[@m] = weight
     end
 
     def partition(p, rr)
@@ -65,9 +66,9 @@ class Graph
   
     def findSet(x)
         if x != @pred[x] 
-            @pred[x] = FindSet(@pred[x])
+            @pred[x] = findSet(@pred[x])
         end
-        findSet = @pred[x]
+        return @pred[x]
     end
   
     def link(x,y)
@@ -76,7 +77,7 @@ class Graph
         else
             @pred[x] = y
             if @rank[x]=@rank[y]
-                inc(@rank[y])
+                @rank[y] = @rank[y] + 1
             end
         end
     end
@@ -91,9 +92,9 @@ class Graph
         end
         @answer=0
         for i in (1..@m)
-            if findSet(B[i]) != findSet(E[i])
-                @answer = @answer + R[i]
-                union(B[i],E[i])
+            if findSet(@b[i]) != findSet(@e[i])
+                @answer = @answer + @r[i]
+                union(@b[i], @e[i])
             end
         end
     end
