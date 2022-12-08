@@ -42,4 +42,39 @@ module BubbleSort
         end
     end
 
+    #Recursive implementation
+    def BubbleSort.recur(list)
+        n = list.length
+        if (n == 1)
+            return
+        end
+
+        count = 0
+        
+        # One pass of bubble
+        # sort. After this pass,
+        # the largest element
+        # is moved (or bubbled)
+        # to end.
+        for i in  (0..n - 2)
+            if (list[i] > list[i + 1])
+                # swap list[i], list[i+1]
+                temp        = list[i]
+                list[i]     = list[i + 1]
+                list[i + 1] = temp
+                count += 1
+            end
+        end
+
+        # Check if any recursion happens or not
+        # If any recursion is not happen then return
+        if (count==0)
+            return
+        end
+
+        # Largest element is fixed,
+        # recur for remaining array
+        bubbleSort(list, n-1)
+    end
+
 end
