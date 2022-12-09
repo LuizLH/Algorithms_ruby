@@ -43,8 +43,8 @@ module BubbleSort
     end
 
     #Recursive implementation
-    def BubbleSort.recur(list)
-        n = list.length
+    def BubbleSort.recursive(list, n)
+        
         if (n == 1)
             return
         end
@@ -74,7 +74,8 @@ module BubbleSort
 
         # Largest element is fixed,
         # recur for remaining array
-        bubbleSort(list, n-1)
+        BubbleSort::recursive(list, n-1)
     end
+  
 
 end
