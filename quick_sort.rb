@@ -53,19 +53,18 @@ class QuickSort
     
         # Loop through the rest of the elements in the array
         elements[1..-1].each do |element|
-        # If the element is less than the pivot, add it to the less_than_pivot array
-        # Otherwise, add it to the greater_than_pivot array
-        if element <= pivot
-            less_than_pivot << element
-        else
-            greater_than_pivot << element
-        end
+            # If the element is less than the pivot, add it to the less_than_pivot array
+            # Otherwise, add it to the greater_than_pivot array
+            if element <= pivot
+                less_than_pivot << element
+            else
+                greater_than_pivot << element
+            end
         end
     
         # Recursively sort the less_than_pivot and greater_than_pivot arrays
         # and concatenate the result with the pivot in the middle
         quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)
     end
-
 
 end

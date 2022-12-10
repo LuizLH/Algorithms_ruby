@@ -2,16 +2,19 @@
 require "./quick_sort.rb"
 require "benchmark" 
 
-#lista = [5, 1, 4, 2, 8]
-lista = [-34, -20, 30, 13, 36, -10, 5, -25, 9, 19, 35, -50, 29, 11]
+#result = Benchmark.measure do
+    #lista = [5, 1, 4, 2, 8]
+    lista = [-34, -20, 30, 13, 36, -10, 5, -25, 9, 19, 35, -50, 29, 11]
 
-qsort = QuickSort.new(lista)
+    qsort = QuickSort.new(lista)
 
-#p lista
+    puts lista
 
-#qsort.qsort(0, lista.length-1)
+    qsort.qsort(0, lista.length-1)
 
-#p lista
+    puts lista
+#end
+#puts result
 
 =begin
 result = Benchmark.measure do
