@@ -1,10 +1,10 @@
-#Implementing bubble sort algorithm
+# Implementing bubble sort algorithm
 
 module BubbleSort
 
-    #My personal implementation follow the below steps to solve the problem:
-    #1-Run a nested for loop to traverse the input array using two variables i and j, such that 0 ≤ i < n-1 and 0 ≤ j < n-i-1
-    #2-If arr[j] is greater than arr[j+1] then swap these adjacent elements, else move on
+    # My personal implementation follow the below steps to solve the problem:
+    # 1-Run a nested for loop to traverse the input array using two variables i and j, such that 0 ≤ i < n-1 and 0 ≤ j < n-i-1
+    # 2-If arr[j] is greater than arr[j+1] then swap these adjacent elements, else move on
     def BubbleSort.mySort(list)
         swap = 1
         until swap == 0
@@ -25,7 +25,7 @@ module BubbleSort
         puts "Fim"
     end
 
-    #Classical implementation
+    # Classical implementation
     def BubbleSort.sort(list)
         n = list.length-1
         for i in (0..n)
@@ -42,7 +42,7 @@ module BubbleSort
         end
     end
 
-    #Recursive implementation
+    # Recursive implementation
     def BubbleSort.recursive(list, n)
         
         if (n == 1)
@@ -57,7 +57,7 @@ module BubbleSort
         # is moved (or bubbled)
         # to end.
         for i in  (0..n - 2)
-            if (list[i] > list[i + 1])
+            if list[i] > list[i + 1]
                 # swap list[i], list[i+1]
                 temp        = list[i]
                 list[i]     = list[i + 1]
@@ -68,13 +68,13 @@ module BubbleSort
 
         # Check if any recursion happens or not
         # If any recursion is not happen then return
-        if (count==0)
-            return
+        if count == 0
+          return
         end
 
         # Largest element is fixed,
         # recur for remaining array
-        BubbleSort::recursive(list, n-1)
+        BubbleSort.recursive(list, n - 1)
     end
   
 
